@@ -1,0 +1,26 @@
+{
+  "name": "ms-pix",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TremboGuys/MS-Pix.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TremboGuys/MS-Pix/issues"
+  },
+  "homepage": "https://github.com/TremboGuys/MS-Pix#readme",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "mercadopago": "^2.9.0"
+  }
+}

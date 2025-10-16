@@ -14,20 +14,16 @@ app.post("/", async (req, res) => {
   try {
     const payment = new Payment(client);
     const result = await payment.create({
-      body: {
-        transaction_amount: 50,
-        description: "Teste de um haborgue",
-        payment_method_id: "pix",
-        payer: { email: "comprador@email.com" }
-      }
+      body: req.body,
     });
     res.json(result);
   } catch (error) {
     res.status(500).json({ error: error.message || error });
   }
 });
+
 app.get("/", (req, res) => {
   res.send("Servidor rodando! Use POST / para criar pagamentos.");
 });
 
-app.listen(3000);
+app.listen(3000, () => console.log("Servidor rodando na porta 3000"));

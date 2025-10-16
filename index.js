@@ -1,9 +1,13 @@
 import express from "express";
 import dotenv from "dotenv";
 import { MercadoPagoConfig, Payment } from "mercadopago";
+import cors from "cors";
 
 dotenv.config();
 const app = express();
+app.use(cors()); // Permite requisições para o frontend
+app.use(express.json());
+
 const client = new MercadoPagoConfig({ accessToken: process.env.ML_ACCESS_TOKEN });
 
 app.post("/", async (req, res) => {
@@ -11,7 +15,7 @@ app.post("/", async (req, res) => {
     const payment = new Payment(client);
     const result = await payment.create({
       body: {
-        transaction_amount: 100,
+        transaction_amount: 50,
         description: "Teste de um haborgue",
         payment_method_id: "pix",
         payer: { email: "comprador@email.com" }
@@ -19,12 +23,11 @@ app.post("/", async (req, res) => {
     });
     res.json(result);
   } catch (error) {
-    res.status(500).json({ error });
+    res.status(500).json({ error: error.message || error });
   }
 });
 app.get("/", (req, res) => {
   res.send("Servidor rodando! Use POST / para criar pagamentos.");
 });
 
-
-app.listen(3000, () => console.log("Servidor rodando na porta 3000"));
+app.listen(3000);

@@ -19,7 +19,7 @@ class NotifyService {
     };
 
     async notification(transactionId, status) {
-        await axios.patch(`http://localhost:8000/api/payments/notifications/?id_transaction=${transactionId}`, { status });
+        await axios.patch(`https://eatly-backend-cbai.onrender.com/api/payments/notifications/?id_transaction=${transactionId}`, { status });
     };
 };
 

@@ -23,7 +23,7 @@ class PaymentService {
     };
 
     async syncPaymentWithBackend(payment) {
-        await axios.post('http://localhost:8000/api/payments/', payment);
+        await axios.post('https://eatly-backend-cbai.onrender.com/api/payments/', payment);
     };
 };
 
